@@ -1,0 +1,7 @@
+.resumo-compra {
+    width: 77.0625rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 4rem auto;
+}

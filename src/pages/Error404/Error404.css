@@ -1,0 +1,39 @@
+.main-error {
+  background-color: var(--white) !important;
+  width: 100%;
+  height: 100vh;
+}
+
+.error {
+  color: var(--black);
+  font-family: var(--font_primaria);
+  font-weight: var(--font_weight_bold);
+}
+
+.error-voltar a{
+  width: 20vw !important;
+  height: 7vh !important;
+  font-weight: var(--font_weight_bold) !important;
+  font-size: 1.1rem;
+  border-radius: 0.5rem;
+  background-color: var(--primary);
+  color: var(--white);
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+
+.error-voltar a:hover {
+  background-color: var(--tertiary) !important;
+  color: var(--white) !important;
+}
+
+
+.corpo-error {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+

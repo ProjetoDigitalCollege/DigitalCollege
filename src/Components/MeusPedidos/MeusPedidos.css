@@ -1,0 +1,67 @@
+.meus-pedidos {
+    max-width: 51.875rem;
+}
+
+.meus-pedidos hr {
+    max-width: 51.875rem;
+    margin-bottom: 1rem;
+}
+
+.detalhe-meus-pedidos {
+    height: 3.625rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.detalhe-meus-pedidos h3 {
+    color: var(--black);
+    font-family: var(--font_primaria);
+    font-weight: var(--font_weight_bold);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    letter-spacing: 0.75px;
+    margin-left: auto;
+}
+
+.info-pedido {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.info-pedido h6 {
+    color: var(--light-gray);
+    font-family: var(--font_primaria);
+    font-weight: var(--font_weight_normal);
+    font-size: 0.625rem;
+    line-height: 1.375rem;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.info-pedido h4 {
+    color: var(--black);
+    font-family: var(--font_primaria);
+    font-weight: var(--font_weight_bold);
+    font-size: 0.875rem;
+    line-height: 1.375rem;
+    letter-spacing: 0.75px;
+    margin: 0;
+}
+
+.img-meus-pedidos {
+    background-color: #E2E3FF;
+    width: 4.44rem;
+    height: 3.625rem;
+    border-radius: 0.2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img-meus-pedidos img {
+    width: 3.16rem;
+}

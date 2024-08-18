@@ -1,0 +1,66 @@
+.infomacoes-pessoais{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+}
+
+.infomacoes-entrega{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 0.5rem;
+}
+
+.section-confirmar-compra {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.aling-forms {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 3rem 0 0 0;
+}
+
+.section-tirar-padding {
+    padding: 0;
+    margin: 0;
+}
+
+.align-resumo-compra {
+    margin: 7rem 0 0 2rem;
+}
+
+.btn-resumo-maior a {
+    width: 43.125rem !important
+}
+
+.resumo-valor2 {
+    background-color: var(--white) !important;
+    margin-bottom: 0;
+}
+
+.info-cartao-container {
+    width: 43.125rem;
+    margin: 0 auto 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 0;
+    gap: 0 1rem;
+}
+
+.info-cartao-group {
+    flex: 1 1 calc(50% - 16px);
+}
+
+.form-radio{
+    width: 43.125rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.align-direction{
+    display: flex;
+    gap: 1.5rem;
+    margin: 1rem 0 1rem 0;
+}

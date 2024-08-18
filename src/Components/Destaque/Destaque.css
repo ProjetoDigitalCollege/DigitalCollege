@@ -1,0 +1,60 @@
+.topo {
+    background-color: var(--white);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 700px;
+}
+
+.topo>div {
+    width: 1200px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.element {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 300px;
+}
+
+.Imagem img {
+    width: 500px;
+}
+
+.texto1 {
+    color: var(--primary);
+    font-weight: 600;
+    font-family: "Inter";
+}
+
+.titulo {
+    color: #474747;
+    font-weight: 700;
+    font-family: "Inter";
+}
+
+.element a {
+    width: 200px;
+    background-color: var(--primary);
+    color: var(--white);
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    transition: 0.3s ease;
+}
+
+.element a:hover{
+    background-color: var(--tertiary);
+}
+
+.titulo2 {
+    color: var(--dark-gray-2);
+    font-family: "Inter";
+
+}
