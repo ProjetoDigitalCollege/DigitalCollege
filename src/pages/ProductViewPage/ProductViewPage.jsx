@@ -10,23 +10,26 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 
 function ProductView() {
-  const [character, setCharacter] = useState([]);
+  const [produtos, setProducts] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "https://669111dd26c2a69f6e8e4d94.mockapi.io/products/products"
-        );
-        setCharacter(response.data);
+        const response = await axios.get("http://localhost:3000/api/products");
+        setProducts(response.data);
         console.log("API response:", response.data);
-        console.log(`deu certo`);
       } catch (error) {
-        console.log(`o erro foi ${error}`);
+        console.log(`Erro ao buscar produtos: ${error}`);
       }
     };
     fetchData();
   }, []);
+
+  function calcularPorcentagemDesconto(preco, preco_desconto) {
+    const desconto = preco - preco_desconto;
+    const porcentagemDesconto = (desconto / preco) * 100;
+    return parseFloat(porcentagemDesconto.toFixed(2));
+  }
 
   return (
     <>
@@ -110,32 +113,35 @@ function ProductView() {
       <section className="produtos_relacionados">
         <h5>Produtos relacionados</h5>
         <div className="produto-em-alta-cards">
-          {Array.isArray(character) &&
-            character
-              .slice(0, 4)
-              .map((card) =>
-                card.desconto === true ? (
-                  <Cards2
-                    key={card.id}
-                    oferta={card.valordesconto}
-                    foto={sapatoAzul}
-                    titulo={card.titulo}
-                    descricao={card.descricao}
-                    valorantigo={card.valorantigo}
-                    valoratual={card.valoratual}
-                  />
-                ) : (
-                  <Cards
-                    key={card.id}
-                    foto={sapatoAzul}
-                    titulo={card.titulo}
-                    descricao={card.descricao}
-                    valorantigo={card.valorantigo}
-                    valoratual={card.valoratual}
-                  />
-                )
-              )}
-        </div>
+            {produtos.slice(0, 4).map((produto) => {
+              console.log(produto); // Verifique a estrutura de dados aqui
+              return (
+                <div key={produto.id}>
+                  {produto.preco_desconto ? (
+                    <Cards2
+                      oferta={calcularPorcentagemDesconto(
+                        produto.preco,
+                        produto.preco_desconto
+                      )}
+                      foto={produto.imagens?.[0]?.path || "default_image_path"} 
+                      titulo={produto.marca}
+                      descricao={produto.descricao}
+                      valorantigo={produto.preco}
+                      valoratual={produto.preco_desconto}
+                    />
+                  ) : (
+                    <Cards
+                      foto={produto.imagens?.[0]?.path || "default_image_path"} 
+                      titulo={produto.marca}
+                      descricao={produto.descricao}
+                      valorantigo={produto.preco}
+                      valoratual={produto.preco_desconto}
+                    />
+                  )}
+                </div>
+              );
+            })}
+          </div>
       </section>
 
       <Footer />
