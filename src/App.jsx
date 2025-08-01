@@ -1,5 +1,6 @@
 import "./App.css"
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AuthProvider } from "./contexts/AuthContext";
 import Home from "./pages/HomePage/HomePage";
 import ProductList from "./pages/ProductListingPage/ProductListingPage";
 import ProductView from "./pages/ProductViewPage/ProductViewPage";
@@ -16,7 +17,7 @@ import Error from "./pages/Error404/Error404";
 function App() {
 
   return (
-    <>
+    <AuthProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -33,7 +34,7 @@ function App() {
           <Route path="*" element={<Error />} />
         </Routes>
       </BrowserRouter>
-    </>
+    </AuthProvider>
   )
 }
 

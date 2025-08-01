@@ -10,25 +10,32 @@ import "./HomePage.css";
 import { Link } from "react-router-dom";
 import { Destaque } from "../../Components/Destaque/Destaque";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import { getProdutos } from "../../services";
 
 function Home() {
   const [produtos, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/products");
-        setProducts(response.data);
-        console.log("API response:", response.data);
+        const { data, error } = await getProdutos(8, 0);
+        if (error) {
+          console.error('Erro ao buscar produtos:', error);
+        } else {
+          setProducts(data || []);
+        }
       } catch (error) {
-        console.log(`Erro ao buscar produtos: ${error}`);
+        console.error(`Erro ao buscar produtos: ${error}`);
+      } finally {
+        setLoading(false);
       }
     };
     fetchData();
   }, []);
 
   function calcularPorcentagemDesconto(preco, preco_desconto) {
+    if (!preco_desconto) return 0;
     const desconto = preco - preco_desconto;
     const porcentagemDesconto = (desconto / preco) * 100;
     return parseFloat(porcentagemDesconto.toFixed(2));
@@ -51,34 +58,39 @@ function Home() {
             </h2>
           </div>
           <div className="produto-em-alta-cards">
-            {produtos.slice(0, 10).map((produto) => {
-              console.log(produto); // Verifique a estrutura de dados aqui
-              return (
-                <div key={produto.id}>
-                  {produto.preco_desconto ? (
-                    <Cards2
-                      oferta={calcularPorcentagemDesconto(
-                        produto.preco,
-                        produto.preco_desconto
-                      )}
-                      foto={produto.imagens?.[0]?.path || "default_image_path"} 
-                      titulo={produto.marca}
-                      descricao={produto.descricao}
-                      valorantigo={produto.preco}
-                      valoratual={produto.preco_desconto}
-                    />
-                  ) : (
-                    <Cards
-                      foto={produto.imagens?.[0]?.path || "default_image_path"} 
-                      titulo={produto.marca}
-                      descricao={produto.descricao}
-                      valorantigo={produto.preco}
-                      valoratual={produto.preco_desconto}
-                    />
-                  )}
-                </div>
-              );
-            })}
+            {loading ? (
+              <div className="loading">Carregando produtos...</div>
+            ) : produtos.length > 0 ? (
+              produtos.slice(0, 8).map((produto) => {
+                return (
+                  <div key={produto.id}>
+                    {produto.preco_desconto ? (
+                      <Cards2
+                        oferta={calcularPorcentagemDesconto(
+                          produto.preco,
+                          produto.preco_desconto
+                        )}
+                        foto={produto.imagens?.[0]?.path || "/src/assets/img/sapato_card.png"} 
+                        titulo={produto.marca}
+                        descricao={produto.descricao}
+                        valorantigo={produto.preco}
+                        valoratual={produto.preco_desconto}
+                      />
+                    ) : (
+                      <Cards
+                        foto={produto.imagens?.[0]?.path || "/src/assets/img/sapato_card.png"} 
+                        titulo={produto.marca}
+                        descricao={produto.descricao}
+                        valorantigo={produto.preco}
+                        valoratual={produto.preco}
+                      />
+                    )}
+                  </div>
+                );
+              })
+            ) : (
+              <div className="no-products">Nenhum produto encontrado</div>
+            )}
           </div>
         </div>
       </section>

@@ -121,3 +121,32 @@ nav a img {
     padding-bottom: 0.3rem;
     border-bottom: var(--primary) 0.15rem solid;
 }
+
+/* Estilos para informações do usuário */
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-welcome {
+    color: var(--dark-gray-2);
+    font-size: 0.9rem;
+    font-weight: var(--font_weight_medium);
+}
+
+.btn-logout {
+    background-color: var(--error);
+    color: var(--white);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn-logout:hover {
+    background-color: #c53030;
+    transform: translateY(-1px);
+}
